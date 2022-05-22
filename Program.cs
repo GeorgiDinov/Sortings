@@ -10,41 +10,64 @@ namespace Sortings
     {
         static void Main(string[] args)
         {
+            Random random = new Random();
+            int randomNumber = random.Next(10, 100);
+
             int arraySize = 7;
             int[] array = GetRandomInitializedArray(arraySize);
+
             Console.WriteLine("Unsorted =   " + GetArrayAsString(array));
             BubbleSort(array);
             Console.WriteLine("BubbleSort = " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
             Console.WriteLine("*****************************************");
+
+            randomNumber = random.Next(10, 100);
             array = GetRandomInitializedArray(arraySize);
             Console.WriteLine("Unsorted =           " + GetArrayAsString(array));
             BubbleSortFlagImpl(array);
             Console.WriteLine("BubbleSortFlagImpl = " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
             Console.WriteLine("*****************************************");
+
+            randomNumber = random.Next(10, 100);
             array = GetRandomInitializedArray(arraySize);
             Console.WriteLine("Unsorted =      " + GetArrayAsString(array));
             SelectionSort(array);
             Console.WriteLine("SelectionSort = " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
             Console.WriteLine("*****************************************");
+
+            randomNumber = random.Next(10, 100);
             array = GetRandomInitializedArray(arraySize);
             Console.WriteLine("Unsorted =      " + GetArrayAsString(array));
             InserionSort(array);
             Console.WriteLine("InserionSort =  " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
             Console.WriteLine("*****************************************");
+
+            randomNumber = random.Next(10, 100);
             array = GetRandomInitializedArray(arraySize);
             Console.WriteLine("Unsorted =   " + GetArrayAsString(array));
             ShellSort(array);
             Console.WriteLine("ShellSort =  " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
             Console.WriteLine("*****************************************");
+
+            randomNumber = random.Next(10, 100);
             array = GetRandomInitializedArray(arraySize);
             Console.WriteLine("Unsorted =   " + GetArrayAsString(array));
             MergeSort(array, 0, array.Length);
             Console.WriteLine("MergeSort =  " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
             Console.WriteLine("*****************************************");
+
+            randomNumber = random.Next(10, 100);
             array = GetRandomInitializedArray(arraySize);
             Console.WriteLine("Unsorted =   " + GetArrayAsString(array));
             QuickSort(array, 0, array.Length);
             Console.WriteLine("QuickSort =  " + GetArrayAsString(array));
+            Console.WriteLine("Has " + randomNumber + " at index " + BinarySearch(array, randomNumber));
         }
 
 
@@ -206,6 +229,29 @@ namespace Sortings
         }
         //End Quick Sort
 
+        private static int BinarySearch(int[] arrayToSearchIn, int numberToSearchFor)
+        {
+            int first = 0;
+            int last = arrayToSearchIn.Length - 1;
+            while (first <= last)
+            {
+                int mid = (first + last) / 2;
+                if (arrayToSearchIn[mid] == numberToSearchFor)
+                {
+                    return mid;
+                }
+
+                if (arrayToSearchIn[mid] < numberToSearchFor)
+                {
+                    first = mid + 1;
+                }
+                else
+                {
+                    last = mid - 1;
+                }
+            }
+            return -1;
+        }
 
         private static void Swap(int[] array, int leftIndex, int rightIndex)
         {
